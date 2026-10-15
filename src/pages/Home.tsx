@@ -1,3 +1,9 @@
+import { WebHeader, WebPage } from "@/components";
+
 export const HomePage = () => {
-  return <div></div>;
+  return (
+    <WebPage>
+      <WebHeader />
+    </WebPage>
+  );
 };

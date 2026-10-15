@@ -1,4 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap");
+@import url("https://fonts.cdnfonts.com/css/angelos-personal-use");
+
 @import "tailwindcss";
 
 @theme {
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f1f9f0;
+
+  --color-primary: #7a9d6b;
+
+  --color-text: #112314;
+  --color-text-secondary: #707070;
+
+  --color-drop-shadow: #11231440;
+
+  --color-button-bg: #ffc3f6;
+
+  --color-border: #1c1c1c26;
+
+  --color-status: #c3c8c4;
+
+  --font-sans: "DM Sans", sans-serif;
+  --font-angelos: "Angelos-Personal use", cursive;
 }
