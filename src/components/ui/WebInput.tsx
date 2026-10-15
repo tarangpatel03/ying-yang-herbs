@@ -2,7 +2,7 @@ import { EyeClosedIcon, EyeIcon } from "lucide-react";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { BUTTON_TYPES } from "@/types/ui.types";
+import { BUTTON_TYPES } from "@/types";
 
 import { WebButton } from "./WebButton";
 import { WebText } from "./WebText";

@@ -1,7 +1,9 @@
+import { useAtomValue } from "jotai";
 import { useRef } from "react";
 
 import { LogInDialog, SignupDialog } from "@/features/auth";
-import { BUTTON_TYPES } from "@/types/ui.types";
+import { webAtoms } from "@/store/atoms";
+import { BUTTON_TYPES } from "@/types";
 
 import { WebButton, WebIcon, WebText } from "../ui";
 
@@ -10,6 +12,9 @@ import type { LoginDialogRef, SignupDialogRef } from "@/features/auth";
 export const WebHeader = () => {
   const logInDialogRef = useRef<LoginDialogRef>(null);
   const signupDialogRef = useRef<SignupDialogRef>(null);
+  const isLoggedIn = useAtomValue(webAtoms.isLoggedInAtom);
+
+  console.log(isLoggedIn);
 
   const onLoginClick = () => {
     logInDialogRef.current?.open();
@@ -31,6 +36,11 @@ export const WebHeader = () => {
           <WebButton buttonType={BUTTON_TYPES.TEXT}>
             <WebText>Contact</WebText>
           </WebButton>
+          {isLoggedIn && (
+            <WebButton buttonType={BUTTON_TYPES.TEXT}>
+              <WebText>Questionnaire</WebText>
+            </WebButton>
+          )}
           <WebButton buttonType={BUTTON_TYPES.PRIMARY} onClick={onLoginClick}>
             <WebText>Login</WebText>
           </WebButton>

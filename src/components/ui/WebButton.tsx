@@ -1,8 +1,8 @@
 import { twMerge } from "tailwind-merge";
 
-import { BUTTON_TYPES } from "@/types/ui.types";
+import { BUTTON_TYPES } from "@/types";
 
-import type { ButtonType } from "@/types/ui.types";
+import type { ButtonType } from "@/types";
 
 type Props = React.ComponentProps<"button"> & {
   buttonType: ButtonType;

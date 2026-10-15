@@ -1,8 +1,10 @@
+import { useSetAtom } from "jotai";
 import { X } from "lucide-react";
 import { forwardRef, useImperativeHandle, useState } from "react";
 
 import { WebButton, WebDropdown, WebInput, WebText } from "@/components";
-import { BUTTON_TYPES } from "@/types/ui.types";
+import { webAtoms } from "@/store";
+import { BUTTON_TYPES } from "@/types";
 
 import type { LoginDialogRef } from "./LoginDialog";
 import type { RefObject } from "react";
@@ -24,6 +26,9 @@ export const SignupDialog = forwardRef<SignupDialogRef, Props>(
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
 
+    const setUser = useSetAtom(webAtoms.userAtom);
+    const setIsLoggedIn = useSetAtom(webAtoms.isLoggedInAtom);
+
     useImperativeHandle(ref, () => ({
       close: () => {
         setOpen(false);
@@ -39,8 +44,23 @@ export const SignupDialog = forwardRef<SignupDialogRef, Props>(
     };
 
     const handleCreateAccount = () => {
-      console.log(name, gender, email, password);
-      setOpen(false);
+      if (
+        name !== "" &&
+        gender !== "" &&
+        email === "user@gmail.com" &&
+        password === "123456"
+      ) {
+        setUser({
+          name: name,
+          email: email,
+          gender: gender,
+        });
+        setIsLoggedIn(true);
+        console.log(name, gender, email, password);
+        setOpen(false);
+      } else {
+        console.log("Please Fill All the Data");
+      }
     };
 
     if (!open) return null;
@@ -75,9 +95,11 @@ export const SignupDialog = forwardRef<SignupDialogRef, Props>(
 
             <WebDropdown
               name="Gender"
+              className=""
+              placeholder="Select gender"
               options={["male", "female"]}
               value={gender}
-              onChange={(e) => setGender(e.target.value)}
+              onChange={setGender}
             />
 
             <WebInput

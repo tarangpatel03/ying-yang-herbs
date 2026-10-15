@@ -2,7 +2,7 @@ import { X } from "lucide-react";
 import { forwardRef, useImperativeHandle, useState } from "react";
 
 import { WebButton, WebInput, WebText } from "@/components";
-import { BUTTON_TYPES } from "@/types/ui.types";
+import { BUTTON_TYPES } from "@/types";
 
 import type { SignupDialogRef } from "./SignupDialog";
 import type { RefObject } from "react";
