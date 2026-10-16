@@ -1,7 +1,9 @@
+import { useSetAtom } from "jotai";
 import { X } from "lucide-react";
 import { forwardRef, useImperativeHandle, useState } from "react";
 
 import { WebButton, WebInput, WebText } from "@/components";
+import { webAtoms } from "@/store";
 import { BUTTON_TYPES } from "@/types";
 
 import type { SignupDialogRef } from "./SignupDialog";
@@ -22,6 +24,9 @@ export const LogInDialog = forwardRef<LoginDialogRef, Props>(
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
 
+    const setUser = useSetAtom(webAtoms.userAtom);
+    const setLoggedIn = useSetAtom(webAtoms.isLoggedInAtom);
+
     useImperativeHandle(ref, () => ({
       close: () => {
         setOpen(false);
@@ -37,8 +42,18 @@ export const LogInDialog = forwardRef<LoginDialogRef, Props>(
     };
 
     const handleLogin = () => {
-      console.log(email, password);
-      setOpen(false);
+      if (email === "user@gmail.com" && password === "123456") {
+        setUser({
+          name: "User",
+          email: email,
+          gender: "male",
+        });
+        setLoggedIn(true);
+        console.log(email, password);
+        setOpen(false);
+      } else {
+        console.log("Please Fill All the Data");
+      }
     };
 
     if (!open) return null;
