@@ -12,6 +12,7 @@ const defaultValues: QuestionnaireFormData = {
   anxietyType: "",
   physicalSymptoms: "",
   worseAnxiety: "",
+  difficultySleeping: true,
 
   dob: "",
 };

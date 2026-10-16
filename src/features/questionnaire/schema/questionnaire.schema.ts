@@ -7,6 +7,7 @@ export const questionnaireSchema = z.object({
   anxietyType: z.string().min(1, "Required"),
   worseAnxiety: z.string().min(1, "Required"),
   physicalSymptoms: z.string().min(1, "Required"),
+  difficultySleeping: z.boolean(),
 
   dob: z.string().min(1, "Required"),
 });

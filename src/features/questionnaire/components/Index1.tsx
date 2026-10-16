@@ -1,6 +1,7 @@
 import { Controller } from "react-hook-form";
 
 import { WebButton, WebDropdown, WebInput, WebText } from "@/components";
+import { WebSwitch } from "@/components/ui/WebSwitch";
 import { BUTTON_TYPES } from "@/types";
 
 import {
@@ -69,6 +70,19 @@ export const Index1 = ({
               error={errors.worseAnxiety?.message}
               className="w-138"
               placeholder="Select"
+            />
+          )}
+        />
+
+        <Controller
+          name="difficultySleeping"
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <WebSwitch
+              name="Do you have difficulty falling asleep or staying asleep?"
+              onChange={onChange}
+              value={value}
+              error={errors.difficultySleeping?.message}
             />
           )}
         />
