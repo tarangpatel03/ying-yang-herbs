@@ -7,7 +7,7 @@ type DataContainerProps = {
 
 export const MatrixSection = () => {
   return (
-    <div className="pt-21 pb-24">
+    <div className="pt-21 px-27.75">
       <div className="bg-text p-12 flex justify-center items-center gap-6 rounded-[20px]">
         <DataContainer title="Happy Clients" value="20k+" />
         <VerticalDivider />

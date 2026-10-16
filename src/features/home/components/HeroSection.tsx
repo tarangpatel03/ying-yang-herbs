@@ -5,7 +5,7 @@ import { BUTTON_TYPES } from "@/types";
 
 export const HeroSection = () => {
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center px-27.75">
       <div className="flex flex-col gap-12 w-175">
         {/* Hero Text */}
         <div className="flex flex-col gap-9">

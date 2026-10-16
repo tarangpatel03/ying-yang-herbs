@@ -1,13 +1,20 @@
 import { WebHeader, WebPage } from "@/components";
-import { HeroSection, MatrixSection } from "@/features/home";
+import {
+  BenefitsSection,
+  HeroSection,
+  MatrixSection,
+  RootedSection,
+} from "@/features/home";
 
 export const HomePage = () => {
   return (
     <WebPage>
       <WebHeader />
-      <div className="px-27.75 pt-21 flex-1 overflow-y-auto">
+      <div className="pt-21 flex-1 overflow-y-auto pb-30">
         <HeroSection />
         <MatrixSection />
+        <RootedSection />
+        <BenefitsSection />
       </div>
     </WebPage>
   );
