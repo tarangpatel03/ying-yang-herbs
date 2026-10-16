@@ -46,11 +46,12 @@ export const LogInDialog = forwardRef<LoginDialogRef, Props>(
         setUser({
           name: "User",
           email: email,
-          gender: "male",
+          gender: Math.random() >= 0.5 ? "male" : "female",
         });
         setLoggedIn(true);
-        console.log(email, password);
         setOpen(false);
+        setEmail("");
+        setPassword("");
       } else {
         console.log("Please Fill All the Data");
       }
@@ -82,7 +83,7 @@ export const LogInDialog = forwardRef<LoginDialogRef, Props>(
               required
               name="Email"
               value={email}
-              placeholder="Enter your email"
+              placeholder="user@gmail.com"
               onChange={(e) => setEmail(e.target.value)}
             />
 
@@ -91,7 +92,7 @@ export const LogInDialog = forwardRef<LoginDialogRef, Props>(
               name="Password"
               type="password"
               value={password}
-              placeholder="Enter your password"
+              placeholder="123456"
               onChange={(e) => setPassword(e.target.value)}
             />
 

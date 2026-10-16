@@ -18,6 +18,11 @@ export type SignupDialogRef = {
   close: () => void;
 };
 
+const genderOptions = [
+  { label: "Male", value: "male" },
+  { label: "Female", value: "female" },
+];
+
 export const SignupDialog = forwardRef<SignupDialogRef, Props>(
   ({ loginRef }, ref) => {
     const [open, setOpen] = useState<boolean>(false);
@@ -56,7 +61,6 @@ export const SignupDialog = forwardRef<SignupDialogRef, Props>(
           gender: gender,
         });
         setIsLoggedIn(true);
-        console.log(name, gender, email, password);
         setOpen(false);
       } else {
         console.log("Please Fill All the Data");
@@ -97,7 +101,7 @@ export const SignupDialog = forwardRef<SignupDialogRef, Props>(
               name="Gender"
               className=""
               placeholder="Select gender"
-              options={["male", "female"]}
+              options={genderOptions}
               value={gender}
               onChange={setGender}
             />
@@ -106,7 +110,7 @@ export const SignupDialog = forwardRef<SignupDialogRef, Props>(
               required
               name="Email"
               value={email}
-              placeholder="Enter your email"
+              placeholder="user@gmail.com"
               onChange={(e) => setEmail(e.target.value)}
             />
 
@@ -115,7 +119,7 @@ export const SignupDialog = forwardRef<SignupDialogRef, Props>(
               name="Password"
               type="password"
               value={password}
-              placeholder="Enter your password"
+              placeholder="123456"
               onChange={(e) => setPassword(e.target.value)}
             />
 

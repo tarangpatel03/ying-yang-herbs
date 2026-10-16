@@ -7,12 +7,15 @@ import { BUTTON_TYPES } from "@/types";
 import { WebButton } from "./WebButton";
 import { WebText } from "./WebText";
 
-type Props = React.ComponentProps<"input">;
+type Props = React.ComponentProps<"input"> & {
+  error?: string | null;
+};
 
 export const WebInput = ({
   name,
   value,
   type,
+  error,
   onChange,
   required,
   className,
@@ -29,7 +32,9 @@ export const WebInput = ({
   return (
     <div className="flex flex-col gap-2">
       <WebText className="font-normal text-[16px]">{name}</WebText>
-      <div className="border align-middle flex border-border focus-within:border-primary py-3 px-4 font-sans text-[16px] font-normal rounded-[10px]">
+      <div
+        className={`border align-middle flex border-border ${error && "border-red-500"}  focus-within:border-primary py-3 px-4 font-sans text-[16px] font-normal rounded-[10px]`}
+      >
         <input
           value={value}
           onChange={onChange}
@@ -47,6 +52,7 @@ export const WebInput = ({
           </WebButton>
         )}
       </div>
+      {!!error && <WebText className="text-error">{error}</WebText>}
     </div>
   );
 };
