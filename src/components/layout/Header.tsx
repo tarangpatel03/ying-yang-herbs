@@ -23,7 +23,7 @@ export const WebHeader = () => {
   return (
     <>
       <div
-        className={`flex justify-between align-middle items-center py-7.5 px-27.75 `}
+        className={`fixed flex z-999  bg-bg justify-between align-middle items-center py-7.5 px-27.75 w-full`}
       >
         <WebIcon source="ic_logo" sizes="36" />
         <div className="flex gap-6">
