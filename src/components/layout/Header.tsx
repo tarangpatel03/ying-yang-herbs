@@ -1,7 +1,10 @@
-import { useAtomValue } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
+import { UserCircle2Icon } from "lucide-react";
 import { useRef } from "react";
+import { NavLink } from "react-router";
 
 import { LogInDialog, SignupDialog } from "@/features/auth";
+import { ROUTE_PATH } from "@/routes";
 import { webAtoms } from "@/store/atoms";
 import { BUTTON_TYPES } from "@/types";
 
@@ -12,12 +15,16 @@ import type { LoginDialogRef, SignupDialogRef } from "@/features/auth";
 export const WebHeader = () => {
   const logInDialogRef = useRef<LoginDialogRef>(null);
   const signupDialogRef = useRef<SignupDialogRef>(null);
-  const isLoggedIn = useAtomValue(webAtoms.isLoggedInAtom);
-
-  console.log(isLoggedIn);
+  const [isLoggedIn, setIsLoggedIn] = useAtom(webAtoms.isLoggedInAtom);
+  const setUser = useSetAtom(webAtoms.userAtom);
 
   const onLoginClick = () => {
     logInDialogRef.current?.open();
+  };
+
+  const onLogout = () => {
+    setIsLoggedIn(false);
+    setUser(null);
   };
 
   return (
@@ -37,13 +44,19 @@ export const WebHeader = () => {
             <WebText>Contact</WebText>
           </WebButton>
           {isLoggedIn && (
-            <WebButton buttonType={BUTTON_TYPES.TEXT}>
-              <WebText>Questionnaire</WebText>
+            <NavLink to={ROUTE_PATH.questionnaire}>
+              <WebButton buttonType={BUTTON_TYPES.TEXT}>
+                <WebText>Questionnaire</WebText>
+              </WebButton>
+            </NavLink>
+          )}
+          {isLoggedIn ? (
+            <UserCircle2Icon onClick={onLogout} />
+          ) : (
+            <WebButton buttonType={BUTTON_TYPES.PRIMARY} onClick={onLoginClick}>
+              <WebText>Login</WebText>
             </WebButton>
           )}
-          <WebButton buttonType={BUTTON_TYPES.PRIMARY} onClick={onLoginClick}>
-            <WebText>Login</WebText>
-          </WebButton>
         </div>
       </div>
       <LogInDialog ref={logInDialogRef} signupRef={signupDialogRef} />

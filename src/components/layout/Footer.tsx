@@ -4,6 +4,10 @@ import { SiFacebook, SiInstagram, SiX, SiYoutube } from "react-icons/si";
 import { WebIcon, WebText } from "../ui";
 
 export const WebFooter = () => {
+  const openWeb = (url: string) => {
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <div className="px-27.75 py-18 justify-center items-center flex flex-col gap-12 bg-text">
       <div className="flex justify-between w-full">
@@ -47,16 +51,28 @@ export const WebFooter = () => {
 
           {/* Socials */}
           <div className="flex gap-4">
-            <div className="h-8 w-8 rounded-full bg-FFFFFF26 justify-center items-center flex">
+            <div
+              className="h-8 w-8 rounded-full bg-FFFFFF26 justify-center items-center flex"
+              onClick={() => openWeb("https://www.instagram.com")}
+            >
               <SiInstagram className="w-4 h-4 text-bg" />
             </div>
-            <div className="h-8 w-8 rounded-full bg-FFFFFF26 justify-center items-center flex">
+            <div
+              className="h-8 w-8 rounded-full bg-FFFFFF26 justify-center items-center flex"
+              onClick={() => openWeb("https://www.facebook.com")}
+            >
               <SiFacebook className="w-4 h-4 text-bg" />
             </div>
-            <div className="h-8 w-8 rounded-full bg-FFFFFF26 justify-center items-center flex">
+            <div
+              className="h-8 w-8 rounded-full bg-FFFFFF26 justify-center items-center flex"
+              onClick={() => openWeb("https://www.x.com")}
+            >
               <SiX className="w-4 h-4 text-bg" />
             </div>
-            <div className="h-8 w-8 rounded-full bg-FFFFFF26 justify-center items-center flex">
+            <div
+              className="h-8 w-8 rounded-full bg-FFFFFF26 justify-center items-center flex"
+              onClick={() => openWeb("https://www.youtube.com")}
+            >
               <SiYoutube className="w-4 h-4 text-bg" />
             </div>
           </div>

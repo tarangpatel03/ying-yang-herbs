@@ -9,10 +9,10 @@ import { WebFooter, WebHeader } from "./components";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <WebHeader />
     <BrowserRouter>
+      <WebHeader />
       <App />
+      <WebFooter />
     </BrowserRouter>
-    <WebFooter />
   </StrictMode>,
 );
